@@ -1,2 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+.e-daterangepicker.e-popup .e-calendar .e-end-date.e-selected.e-range-hover span.e-day, .e-daterangepicker.e-popup .e-calendar .e-start-date.e-selected.e-range-hover span.e-day, .e-bigger.e-small .e-daterangepicker.e-popup .e-calendar .e-end-date.e-selected.e-range-hover span.e-day, .e-bigger.e-small .e-daterangepicker.e-popup .e-calendar .e-start-date.e-selected.e-range-hover span.e-day .e-cell .e-start-date .e-selected
+{
+  background-color: #1004b8;
+}
+.customCSS.e-date-range-wrapper .e-input-group-icon.e-icons.e-active, /* csslint allow: adjoining-classes*/
+.customCSS .e-btn.e-flat, /* csslint allow: adjoining-classes*/
+.customCSS .e-btn.e-flat:hover .e-input-group.e-control-wrapper .e-daterangepicker.e-popup .e-calendar .e-end-date.e-selected.e-range-hover span.e-day .e-btn.e-flat.e-primary .e-css.e-btn.e-flat.e-primary .e-input-group-icon.e-range-icon::before, .e-control-wrapper .e-input-group-icon.e-range-icon::before { /* csslint allow: adjoining-classes*/
+  color: #1004b8;
+}
+
+
+
+.e-daterangepicker .e-popup .e-control .customCSS .e-lib .e-popup-open .e-keyboard .e-input-group.e-control-wrapper{
+  background-color: #1004b8 !important;
+}
+
+.e-input-group:not(.e-float-icon-left):not(.e-float-input)::before, .e-input-group:not(.e-float-icon-left):not(.e-float-input)::after, .e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before, .e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after, .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::before, .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::after, .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before, .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after {
+  background-color: #1004b8 !important;
+}

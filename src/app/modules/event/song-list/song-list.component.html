@@ -1,0 +1,41 @@
+<h1 mat-dialog-title> Song List</h1>
+<div mat-dialog-content>
+  <div class="song-list-container">
+  <form class="example-form" [formGroup]='songsForm'>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Choose a Song" [matAutocomplete]="auto" formControlName='songInput'>
+    </mat-form-field>
+<!--    <span>Your choice is: {{songsForm.get('songInput').value | json}}</span>-->
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='addSong($event.option.value)'>
+      <mat-option *ngFor="let song of (filteredSongs | async)?.data" [value]="song">
+        <span>{{ song.title }}</span>
+        <small> | ID: {{song.id}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </form>
+  </div>
+  <mat-card-content>
+    <div class="example-container mat-elevation-z8">
+      <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> Song Id </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+        </ng-container>
+        <ng-container  matColumnDef="operations">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">  <button  mat-button  color="primary" (click)="deleteSong(element.id)"><mat-icon>delete</mat-icon></button>
+          </mat-cell></ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </mat-card-content>
+</div>
+  <div class="btn" mat-dialog-actions>
+  <button mat-raised-button class = "btn" (click)="close()" color="warn">Close</button>
+  <button mat-raised-button class = "btn" color = "primary" (click)="saveSongList()">Save</button>
+  </div>

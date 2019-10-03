@@ -1,20 +1,85 @@
-
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Red+Hat+Text&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:300&display=swap" rel="stylesheet">
 </head>
 
 <body>
 <div class="flex-center position-ref full-height">
-  <nav>
-  <div class="top-right links">
+  <mat-toolbar color="primary">
+    <div>
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+    </div>
+    <div>
+      <a routerLink="/">Royalty Collecting System</a>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+      <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+        <li>
+          <a class="label" routerLink="/login">Login</a>
+        </li>
+        <li>
+          <a class="label" routerLink="/register">Register</a>
+        </li>
+        <li>
+          <a>Dashboard</a>
+        </li>
+        <li>
+          <a>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation">
+      <mat-nav-list>
+        <a mat-list-item>
+          <mat-icon class="icon">home</mat-icon>
+          <span class="label">Home</span>
+        </a>
+        <a mat-list-item>
+          <mat-icon class="icon">dashboard</mat-icon>
+          <span class="label">Dashboard</span>
+        </a>
+        <a mat-list-item routerLink="/event-log">
+          <mat-icon class="icon">event_note</mat-icon>
+          <span class="label">Events</span>
+        </a>
+        <a mat-list-item>
+          <mat-icon class="icon">receipt</mat-icon>
+          <span class="label">Invoices</span>
+        </a>
+        <a mat-list-item>
+          <mat-icon class="icon">local_atm</mat-icon>
+          <span class="label">Payments</span>
+        </a>
+        <mat-list-item>
+          <mat-icon class="icon">library_books</mat-icon>
+          <span class="label">Reports</span>
+          <button mat-button mat-icon-button (click)="showSubmenu = !showSubmenu">
+            <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}">expand_more</mat-icon>
+          </button>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded' : showSubmenu}">
+          <mat-list-item>Artist</mat-list-item>
+          <mat-list-item>OSCA</mat-list-item>
+        </div>
+        <a mat-list-item type="button">
+          <mat-icon class="icon">input</mat-icon>
+          <span class="label">LogOut</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh;">
 
-    <a routerLink="/home" routerLinkActive="active">Home</a>
-    <a routerLink="/login" routerLinkActive="active">Login</a>
-    <a routerLink="/register" routerLinkActive="active">Register</a>
-
-  </div>
-  </nav>
-  <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
 </body>
 

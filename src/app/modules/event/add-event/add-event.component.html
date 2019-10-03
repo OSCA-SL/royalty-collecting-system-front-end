@@ -1,0 +1,72 @@
+<mat-card  class="my-card">
+  <mat-card-header>
+    <mat-card-title>Add Event</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form  class="my-form">
+      <table  style="width: 100%"  cellspacing="10">
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Title</mat-label>
+              <input  matInput  placeholder="Name" [(ngModel)]="event.title"  name="name"  required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="event.date" name="date">
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Location</mat-label>
+              <textarea [(ngModel)]="event.location"  matInput name="location"></textarea>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Description</mat-label>
+              <textarea [(ngModel)]="event.descp"  matInput name="location"></textarea>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Event Type</mat-label>
+              <mat-select [(value)]="event.type" placeholder="Event Type">
+                <mat-option value="open">Open Event</mat-option>
+                <mat-option value="close">Closed Event</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Price</mat-label>
+              <input matInput currencyMask [(ngModel)]="event.price" name="price" [options]="{ prefix: 'LKR ', thousands: ',', decimal: '.', precision: 2 }"/>
+            </mat-form-field>
+          </td>
+          <td>
+            <button mat-raised-button (click)="addSongList()"  color="primary">
+              <mat-icon>add</mat-icon>Add Song List</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="saveEvent()"  color="primary">Save</button>
+  </mat-card-actions>
+</mat-card>
