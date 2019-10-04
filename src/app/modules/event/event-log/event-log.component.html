@@ -44,6 +44,7 @@
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="viewRecord(row)" class="row-link"></mat-row>
               </mat-table>
+              <mat-paginator #paginator [style.display]="loading === false ? 'block' : 'none'" [pageSize]="5" [length]= "6" showFirstLastButtons></mat-paginator>
             </div>
           </mat-card-content>
         </mat-card>

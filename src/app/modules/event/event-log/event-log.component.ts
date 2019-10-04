@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {Event} from '../../models/Event';
 import {MatTableDataSource, MatPaginator, MatSort} from "@angular/material";
 import {EventService} from "../../../services/event-service/event.service";
-import {formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-event-log',
@@ -13,8 +12,10 @@ import {formatDate } from '@angular/common';
 })
 export class EventLogComponent implements OnInit {
 
-  dataSource: any;
+
   events: Event[];
+  loading = true;
+  length: number;
 
   displayedColumns = [
     'date_created',
@@ -29,15 +30,23 @@ export class EventLogComponent implements OnInit {
   // ];
 
   // dataSource  =  new  MatTableDataSource<Event>(this.events);
+  dataSource = new MatTableDataSource<any>();
+  @ViewChild(MatPaginator, {static: false}) paginator:  MatPaginator;
 
   constructor(private  router:  Router, private eventService: EventService){ }
 
   ngOnInit() {
     this.eventService.getEvents().subscribe((data) => {
       console.log(data);
+      this.loading = false;
       this.dataSource = data['data'];
+      this.dataSource.paginator  =  this.paginator;
     });
   }
+
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator  =  this.paginator;
+  // }
 
   AddEvent() {
     this.router.navigate(['/add-event']);

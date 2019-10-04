@@ -67,18 +67,13 @@ export class SongListComponent implements OnInit {
     console.log(this.dataSource);
   }
 
-  close() : void{
-    this.dialogRef.close(true);
+  close(){
+    this.dialogRef.close();
   }
 
   saveSongList() {
     this.dialogRef.close(this.dataSource);
   }
 
-  // onSubmit(): void {
-  //   // this.blogPost.position = this.dataService.dataLength();
-  //   // this.event.emit({data: this.blogPost});
-  //   this.dialogRef.close();
-  // }
 
 }
